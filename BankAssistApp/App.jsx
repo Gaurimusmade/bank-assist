@@ -8,9 +8,15 @@
 import React, { useState } from 'react';
 import LoginScreen from './src/screens/LoginScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
+import Ticket from './src/components/Ticket';
+import CreateTicketScreen from './src/screens/CreateTicketScreen';
+import BottomNavbar from './src/components/BottomNavbar';
+import TopNavbar from './src/components/TopNavbar';
+import { View } from 'react-native';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentScreen, setCurrentScreen] = useState('dashboard'); // 'dashboard', 'tickets', or 'create'
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
@@ -20,16 +26,37 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  const handleNavigate = (screen) => {
+    setCurrentScreen(screen);
+  };
+
   // Show login screen if not logged in
   if (!isLoggedIn) {
-    return (
-        <LoginScreen onLoginSuccess={handleLoginSuccess} />
-    );
+    return <LoginScreen onLoginSuccess={handleLoginSuccess} />;
   }
 
-  // Show dashboard if logged in
+  // Show main app with top and bottom navigation
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'dashboard':
+        return <DashboardScreen />;
+      case 'tickets':
+        return <Ticket />;
+      case 'create':
+        return <CreateTicketScreen />;
+      default:
+        return <DashboardScreen />;
+    }
+  };
+
   return (
-      <DashboardScreen />
+    <View style={{ flex: 1 }}>
+      <TopNavbar />
+      <View style={{ flex: 1 }}>
+        {renderScreen()}
+      </View>
+      <BottomNavbar currentScreen={currentScreen} onNavigate={handleNavigate} />
+    </View>
   );
 }
 
