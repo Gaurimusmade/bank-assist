@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
-import Icon from 'react-native-vector-icons/Feather';
+import { BriefcaseIcon, UserIcon, MailIcon, PhoneIcon } from './SvgIcons';
 
 export default function TopNavbar() {
   const [showUserProfile, setShowUserProfile] = useState(false);
@@ -22,10 +22,10 @@ export default function TopNavbar() {
     <View style={tw`bg-black`}>
       <StatusBar barStyle="light-content" backgroundColor="#1e40af" />
       <SafeAreaView style={tw`bg-[#1e40af]`}>
-        <View style={tw`flex-row items-center px-4 py-2 mt-10`}>
+        <View style={tw`flex-row items-center px-4 py-2 mt-2`}>
           {/* App Icon */}
           <View style={tw`w-10 h-10 bg-blue-700 rounded-xl items-center justify-center mr-3`}>
-            <Icon name="briefcase" size={20} color="white" />
+            <BriefcaseIcon size={20} color="white" />
           </View>
           
           {/* App Info */}
@@ -40,7 +40,7 @@ export default function TopNavbar() {
               style={tw`w-10 h-10 bg-blue-600 rounded-full items-center justify-center`}
               onPress={handleUserIconPress}
             >
-              <Icon name="user" size={20} color="white" />
+              <UserIcon size={20} color="white" />
             </TouchableOpacity>
 
             {/* User Profile Dropdown */}
@@ -50,7 +50,7 @@ export default function TopNavbar() {
                 <View style={tw`p-4 border-b border-gray-100`}>
                   <View style={tw`flex-row items-center`}>
                     <View style={tw`w-12 h-12 bg-blue-600 rounded-full items-center justify-center mr-3`}>
-                      <Icon name="user" size={24} color="white" />
+                      <UserIcon size={24} color="white" />
                     </View>
                     <View style={tw`flex-1`}>
                       <Text style={tw`text-gray-800 font-semibold text-base`}>{userData.name}</Text>
@@ -65,7 +65,7 @@ export default function TopNavbar() {
                 <View style={tw`p-4 space-y-3`}>
                   <View style={tw`flex-row items-center`}>
                     <View style={tw`w-8 h-8 bg-gray-100 rounded-full items-center justify-center mr-3`}>
-                      <Icon name="mail" size={16} color="#6b7280" />
+                      <MailIcon size={16} color="#6b7280" />
                     </View>
                     <View style={tw`flex-1`}>
                       <Text style={tw`text-gray-500 text-xs`}>Email</Text>
@@ -75,7 +75,7 @@ export default function TopNavbar() {
 
                   <View style={tw`flex-row items-center`}>
                     <View style={tw`w-8 h-8 bg-gray-100 rounded-full items-center justify-center mr-3`}>
-                      <Icon name="phone" size={16} color="#6b7280" />
+                      <PhoneIcon size={16} color="#6b7280" />
                     </View>
                     <View style={tw`flex-1`}>
                       <Text style={tw`text-gray-500 text-xs`}>Phone</Text>

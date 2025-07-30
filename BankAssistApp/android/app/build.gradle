@@ -106,14 +106,7 @@ android {
         }
     }
     
-    // React Native Vector Icons
-    sourceSets {
-        main {
-            assets.srcDirs += [
-                '../../node_modules/react-native-vector-icons/Fonts'
-            ]
-        }
-    }
+
 }
 
 dependencies {
